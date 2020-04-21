@@ -18,7 +18,7 @@ Event Listeners
 // Adds event listener.
 // adds a todo every time the
 // button is clicked.
-todoButton = addEventListener('click', addTodo)
+todoButton = addEventListener("click", addTodo);
 
 
 /*********************************
@@ -39,7 +39,7 @@ function addTodo(event) {
 
   // Creates Li
   const newTodo = document.createElement('li');
-  newTodo.innerText = "Hey";
+  newTodo.innerText = todoInput.value;
   newTodo.classList.add('todo-item');
   todoDiv.appendChild(newTodo);
 
@@ -52,12 +52,13 @@ function addTodo(event) {
   // Check trash button.
   const trashButton = document.createElement('button');
   trashButton.innerHTML = '<li class="fas fa-trash"></li>'
-  trashButton.classList.add("complete-btn");
+  trashButton.classList.add("trash-btn");
   todoDiv.appendChild(trashButton);
 
   // Appends to list.
   todoList.appendChild(todoDiv);
 
-
+  // Clear todo input value.
+  todoInput.value = "";
 
 }
