@@ -18,8 +18,8 @@ Event Listeners
 // Adds event listener.
 // adds a todo every time the
 // button is clicked.
-todoButton = addEventListener("click", addTodo);
-
+todoButton.addEventListener("click", addTodo);
+todoList.addEventListener("click", deleteCheck);
 
 /*********************************
 
@@ -28,6 +28,7 @@ Functions
 **********************************/
 
 // Builds function.
+// Ads a todo.
 function addTodo(event) {
 
   // Prevent form from submiting.
@@ -60,5 +61,24 @@ function addTodo(event) {
 
   // Clear todo input value.
   todoInput.value = "";
+
+}
+
+// Builds function.
+// Deletes todo.
+function deleteCheck(e) {
+
+  // Grabs item on whetever we
+  // are clicking on.
+  const item = e.target;
+
+  // Deletes todo.
+  if(item.classList[0] === 'trash-btn') {
+
+    const todo = item.parentElement;
+
+    todo.remove();
+
+  }
 
 }
