@@ -34,7 +34,7 @@ function addTodo(event) {
   // Prevent form from submiting.
   event.preventDefault();
 
-  // Todo DIV
+  // Creates Todo DIV
   const todoDiv = document.createElement('div');
   todoDiv.classList.add('todo');
 
@@ -76,8 +76,18 @@ function deleteCheck(e) {
   if(item.classList[0] === 'trash-btn') {
 
     const todo = item.parentElement;
+    // Animation
+    todo.classList.add('fall');
+    todo.addEventListener('transitionend', function(){
 
-    todo.remove();
+      todo.remove();
+
+    });
+
+  } else if(item.classList[0] === 'complete-btn') { // Check Mark
+
+    const todo = item.parentElement;
+    todo.classList.toggle('completed');
 
   }
 
