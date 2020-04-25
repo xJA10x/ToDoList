@@ -8,6 +8,7 @@ Selectors
 const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
+const filterOption = document.querySelector('.filter-todo');
 
 /*********************************
 
@@ -20,6 +21,7 @@ Event Listeners
 // button is clicked.
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteCheck);
+filterOption.addEventListener("click", filterTodo);
 
 /*********************************
 
@@ -90,5 +92,47 @@ function deleteCheck(e) {
     todo.classList.toggle('completed');
 
   }
+
+}
+
+// Builds function.
+// Filters a todo.
+function filterTodo(e) {
+
+  // grabs all the todos.
+  const todos = todoList.childNodes;
+  console.log(todos);
+  // Loops over all todos.
+  todos.forEach(function(todo) {
+
+    if(todo.classList !== undefined) {
+
+      switch(e.target.value) {
+
+        case "all":
+          todo.style.display= "flex";
+          break;
+
+        case "completed":
+          if(todo.classList.contains("completed")) {
+
+            todo.style.display = "flex";
+
+          } else {
+
+            todo.style.display = "none";
+
+          }
+
+        default:
+          break;
+
+      }
+
+    }
+
+    return;
+
+  });
 
 }
