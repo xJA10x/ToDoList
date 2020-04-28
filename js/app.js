@@ -16,10 +16,6 @@ Event Listeners
 
 **********************************/
 
-// Adds event listener.
-// adds a todo every time the
-// button is clicked.
-document.addEventListener('DOMContentLoaded', getTodos);
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteCheck);
 filterOption.addEventListener("click", filterTodo);
@@ -223,31 +219,5 @@ function getTodos() {
     todoList.appendChild(todoDiv);
 
   });
-
-}
-
-// Builds function.
-// Deletes todos.
-function removeLocalTodos(todo) {
-
-  // Check -- hey do I already have things in there.
-  let todos;
-
-  // Builds if statement.
-  if(localStorage.getItem('todos') === null) {
-
-    // Creates empty array if it doesnt exist.
-    todos = [];
-
-  } else {
-
-    // Parse to json.
-    todos = JSON.parse(localStorage.getItem('todos'));
-
-  }
-
-  const todoIndex = todo.children[0].innerText;
-  todos.splice(todos.indexOf(todoIndex), 1);
-  localStorage.setItem('todos', JSON.stringify(todos));
 
 }
