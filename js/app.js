@@ -43,9 +43,6 @@ function addTodo(event) {
   newTodo.classList.add('todo-item');
   todoDiv.appendChild(newTodo);
 
-  // Adds todo to local storage.
-  saveLocalTodos(todoInput.value);
-
   //Check mark button.
   const completedButton = document.createElement('button');
   completedButton.innerHTML = '<i class="fas fa-check"></i>';
@@ -80,7 +77,7 @@ function deleteCheck(e) {
     const todo = item.parentElement;
     // Animation
     todo.classList.add('fall');
-    removelocalTodos(todo)
+
     todo.addEventListener('transitionend', function(){
 
       todo.remove();
@@ -143,80 +140,6 @@ function filterTodo(e) {
     }
 
     return;
-
-  });
-
-}
-
-// Builds function.
-// Saves todos to local storage.
-function saveLocalTodos(todo) {
-
-  // Check -- hey do I already have things in there.
-  let todos;
-
-  // Builds if statement.
-  if(localStorage.getItem('todos') === null) {
-
-    // Creates empty array if it doesnt exist.
-    todos = [];
-
-  } else {
-
-    // Parse to json.
-    todos = JSON.parse(localStorage.getItem('todos'));
-
-  }
-
-  todos.push(todo);
-  localStorage.setItem('todos', JSON.stringify(todos));
-
-}
-
-// Builds function.
-function getTodos() {
-
-  let todos;
-
-  // Builds if statement.
-  if(localStorage.getItem('todos') === null) {
-
-    // Creates empty array if it doesnt exist.
-    todos = [];
-
-  } else {
-
-    // Parse to json.
-    todos = JSON.parse(localStorage.getItem('todos'));
-
-  }
-
-  todos.forEach(function(todo) {
-
-    // Creates Todo DIV
-    const todoDiv = document.createElement('div');
-    todoDiv.classList.add('todo');
-
-    // Creates Li
-    const newTodo = document.createElement('li');
-    newTodo.innerText = todo;
-    newTodo.classList.add('todo-item');
-    todoDiv.appendChild(newTodo);
-
-    //Check mark button.
-    const completedButton = document.createElement('button');
-    completedButton.innerHTML = '<i class="fas fa-check"></i>';
-    completedButton.classList.add("complete-btn");
-    todoDiv.appendChild(completedButton);
-
-    // Check trash button.
-    const trashButton = document.createElement('button');
-    trashButton.innerHTML = '<li class="fas fa-trash"></li>'
-    trashButton.classList.add("trash-btn");
-    todoDiv.appendChild(trashButton);
-
-    // Appends to list.
-    todoList.appendChild(todoDiv);
 
   });
 
